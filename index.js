@@ -16,17 +16,19 @@ function submitData(name, email) {
             return response.json();
         })
         .then(function(object) {
-            let body = document.querySelector("body")
-            let idTag = document.createElement("p")
-            body.append(idTag)
-            idTag.append(object.id);
+            addToDOM(object.id);
         })
         .catch(function(error) {
-            let body = document.querySelector("body")
-            let errorTag = document.createElement("p")
-            body.append(errorTag)
-            errorTag.append(error.message)
+            addToDOM(error.message);
         });
+
+        function addToDOM(content) {
+            let body = document.querySelector("body")
+            let tag = document.createElement("p")
+            body.append(tag)
+            tag.append(`${content}`)
+
+        }
 }
 
 
